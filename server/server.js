@@ -18,6 +18,7 @@ app.use(express.static(publicPath));
 module.exports.io = socketIO(server);
 require('./sockets/socket');
 
+// Conectar a MONGODB
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -30,7 +31,7 @@ mongoose.connect(process.env.MONGO_URI, {
 });
 
 
-
+// Start Server
 server.listen( process.env.PORT, (err) => {
 
     if (err) throw new Error(err);

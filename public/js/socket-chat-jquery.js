@@ -102,6 +102,7 @@ divUsers.on('click', 'a', function() {
     }
 });
 
+// On send a new message
 formSend.on('submit', function(e) {
     e.preventDefault();
 

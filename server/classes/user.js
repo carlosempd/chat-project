@@ -1,3 +1,8 @@
+/**
+ * User class to handle user actions
+ *
+ * @class User
+ */
 class User {
     
     constructor() {

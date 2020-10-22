@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+/**
+ * Schema for messages
+ */
 let messageSchema = new Schema({
     idUser: {
         type: String,
