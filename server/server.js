@@ -1,4 +1,7 @@
+require('../server/config/config');
+
 const express = require('express');
+const mongoose = require('mongoose');
 const socketIO = require('socket.io');
 const http = require('http');
 
@@ -8,7 +11,6 @@ const app = express();
 let server = http.createServer(app);
 
 const publicPath = path.resolve(__dirname, '../public');
-const port = process.env.PORT || 3000;
 
 app.use(express.static(publicPath));
 
@@ -16,14 +18,23 @@ app.use(express.static(publicPath));
 module.exports.io = socketIO(server);
 require('./sockets/socket');
 
+mongoose.connect('mongodb+srv://carlos:carlos123@cluster0.rhpb3.mongodb.net/chat?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
+}, (error, res) => {   
+    if (error) throw error;
+
+    console.log('Database ONLINE');
+});
 
 
 
-
-server.listen(port, (err) => {
+server.listen( process.env.PORT, (err) => {
 
     if (err) throw new Error(err);
 
-    console.log(`Servidor corriendo en puerto ${ port }`);
+    console.log(`Servidor corriendo en puerto ${  process.env.PORT }`);
 
 });

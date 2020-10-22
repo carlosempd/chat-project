@@ -14,42 +14,33 @@ var user = {
 };
 
 socket.on('connect', function() {
-    console.log('Conectado al servidor');
+    
 
     socket.emit('enterChat', user, function(resp) {
-        console.log('Usuarios conectados', resp);
+        renderUsers(resp);
     });
 });
 
 // escuchar
 socket.on('disconnect', function() {
-
-    console.log('Perdimos conexión con el servidor');
-
+    // user disconnected
 });
 
 
-// Send Message
-// socket.emit('createMessage', {
-//     usuario: 'Fernando',
-//     mensaje: 'Hola Mundo'
-// }, function(resp) {
-//     console.log('respuesta server: ', resp);
-// });
-
 // Listen info
-socket.on('createMessage', function(mensaje) {
-
-    console.log('Servidor:', mensaje);
+socket.on('createMessage', function(message) {
+    renderMessages(message, false);
+    scrollBottom();
 
 });
 
 // When a user enters/leaves a chat
 socket.on('listUser', function(users) {
-    console.log(users);
+    
+    renderUsers(users);
 });
 
 // private messages
 socket.on('privateMessage', function(message) {
-    console.log('Private Message: ', message);
+    // Send a private message
 });

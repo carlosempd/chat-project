@@ -1,10 +1,13 @@
 
 
-const createMessage = (name, message) => {
+const createMessage = (idUser, name, message, idAddressee, nameAddressee) => {
 
     return {
+        idUser,
         name,
         message,
+        idAddressee,
+        nameAddressee,
         date: new Date().getTime()
     };
 };
