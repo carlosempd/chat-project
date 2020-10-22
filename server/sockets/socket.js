@@ -28,6 +28,9 @@ io.on('connection', (client) => {
         // Notify a user joined the chat
         client.broadcast.to(data.room).emit('createMessage',  createMessage('0', 'Admin', `${ data.name } joined the chat`, client.id, client.room));
 
+        // List users
+        client.broadcast.to(data.room).emit('listUser',  users.getUsersByChat(data.room));
+
         callback(users.getUsersByChat( data.room ));
     });
 

@@ -36,7 +36,6 @@ socket.on('createMessage', function(message) {
 
 // When a user enters/leaves a chat
 socket.on('listUser', function(users) {
-    
     renderUsers(users);
 });
 
