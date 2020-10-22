@@ -18,7 +18,7 @@ app.use(express.static(publicPath));
 module.exports.io = socketIO(server);
 require('./sockets/socket');
 
-mongoose.connect('mongodb+srv://carlos:carlos123@cluster0.rhpb3.mongodb.net/chat?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
