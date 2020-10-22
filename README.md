@@ -42,5 +42,5 @@ La aplicación funciona con:
 - Sockets
 - MongoDB
 
-Para simular los clientes web y la parte front de la manera mas sencilla posible se usó vanilla JS, jquery y html, sin nigún framework.
+Para simular los clientes web y la parte front de la manera mas sencilla posible se usó vanilla JS, jquery y html y bootstrap.
 
