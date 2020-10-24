@@ -11,7 +11,6 @@ io.on('connection', (client) => {
     // On enter a chat
     client.on('enterChat', (data, callback) => {
 
-
         if ( !data.name || !data.room ) {
             return callback({
                 error: true,
@@ -62,12 +61,13 @@ io.on('connection', (client) => {
     // On left a chat
     client.on('disconnect', () => {
         const deletedUser = users.DeleteUser( client.id );
-        console.log('user left the chat: ', deletedUser);
+        if (deletedUser) {
+            // Notify a user left the chat
+            client.broadcast.to(deletedUser.room).emit('createMessage',  createMessage('0', 'Admin', `${ deletedUser.name } left the chat`, client.id, client.room));
+    
+            client.broadcast.to(deletedUser.room).emit( 'listUser', users.getUsersByChat(deletedUser.room) );
 
-        // Notify a user left the chat
-        client.broadcast.to(deletedUser.room).emit('createMessage',  createMessage('0', 'Admin', `${ deletedUser.name } left the chat`, client.id, client.room));
-
-        client.broadcast.to(deletedUser.room).emit( 'listUser', users.getUsersByChat(deletedUser.room) );
+        }
 
     });
 
