@@ -21,7 +21,8 @@ Finalmente acceder a:
 ```
 localhost:3000
 ```
-
+Al acceder a ésta dirección se mostrará una vista de chat para probar el funcionamiento del chat.
+Sin embargo se puede integrar perfectamente con una aplicación frontend en Angular por ejemplo.
 # Funcionalidad
 La aplicación consta de dos vistas sencillas, la primera un formulario que pide ingresar un nombre de usuario y el nombre para un sala, una vez ingresados estos datos se accederá al chat.
 
@@ -44,3 +45,11 @@ La aplicación funciona con:
 
 Para simular los clientes web y la parte front de la manera mas sencilla posible se usó vanilla JS, jquery y html y bootstrap.
 
+# Endpoints
+GET /messsges/:idRoom
+```
+idRoom: string
+```
+El parámetro idRoom es el ID de la sala a la cuál se quieren mostrar los mensajes.
+Retorna el una lista de mensajes asociados a la sala con el ID especificado.
+Está ruta permite obtener un histórico de mensajes en la sala.
