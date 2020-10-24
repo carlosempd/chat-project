@@ -46,7 +46,7 @@ La aplicación funciona con:
 Para simular los clientes web y la parte front de la manera mas sencilla posible se usó vanilla JS, jquery y html y bootstrap.
 
 # Endpoints
-GET /messsges/:idRoom
+GET /messages/:idRoom
 ```
 idRoom: string
 ```
